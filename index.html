@@ -18,13 +18,13 @@
   <header class="jumbotron">
     <h1 class="display-3">Work Day Scheduler</h1>
     <p class="lead description">A simple calendar app for scheduling your work day</p>
-    <p id="currentDay" class="lead"></p>
+    <p id="currentDay" class="lead description"></p>
   </header>
 
 
-  <div class="container">
+  <div id="mainContainer" class="container" >
     <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
-    <div class="row">
+    <div class="row"  style="display: none">
 
       <div class="col-sm-2 col-md-2 time-block hour">
         time
@@ -44,14 +44,8 @@
 
   </div>
 
-
-
-
-
-
-
-
-
+  
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="./Assets/scheduler.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
