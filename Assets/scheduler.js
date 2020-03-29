@@ -70,15 +70,6 @@ $(document).ready(function () {
 
             }
 
-
-
-
-
-
-
-
-
-
             mainRowDiv.append(col2textarea);
 
             //add saveBtn div, class="col-sm-2 col-md-2 saveBtn"
@@ -88,8 +79,6 @@ $(document).ready(function () {
             col3Div.addClass("col-md-2");
             col3Div.addClass("saveBtn");
             col3Div.attr("id", "save-" + j)
-
-
 
             mainRowDiv.append(col3Div);
 
@@ -167,15 +156,13 @@ $(document).ready(function () {
             currentHour = moment().hour();
 
             if (currentHour > pastHour) {
-                changePastColor(currentHour);
-                changePresentColor(currentHour);
-                changeFutureColor(currentHour);
+                location.reload();
             }
             pastHour = currentHour;
 
         }, 1000)
     }
-    // changeBackGroundColor();
+    changeBackGroundColor();
 
     // function changePastColor(currentHour) {
     //     if (currentHour > 12) {
