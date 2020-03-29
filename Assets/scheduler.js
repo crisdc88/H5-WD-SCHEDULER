@@ -27,13 +27,17 @@ $(document).ready(function () {
 
     function creatObjects() {
 
+        var j = 9;
+
         for (var i = 0; i < textHours.length; i++) {
-            var txtid = textHours[i].split(" ");
+
+            //var txtid = textHours[i].split(" ");
             //create elements under class container
             // create row div, class row
             var mainRowDiv = $("<div>")
             mainRowDiv.addClass("row");
-            mainRowDiv.attr("id", +txtid[0]);
+            // mainRowDiv.attr("id", +txtid[0]);
+            mainRowDiv.attr("id", +j);
             $("#mainContainer").append(mainRowDiv);
 
 
@@ -44,7 +48,7 @@ $(document).ready(function () {
             col1Div.addClass("time-block");
             col1Div.addClass("hour");
             col1Div.text(textHours[i]);
-            col1Div.attr("id", "time-" + txtid[0]);
+            col1Div.attr("id", "time-" + j);
             mainRowDiv.append(col1Div);
 
             //add text area, add class class="col-sm-8 col-md-8 future description"
@@ -52,7 +56,29 @@ $(document).ready(function () {
             col2textarea.addClass("col-sm-8");
             col2textarea.addClass("col-md-8");
             col2textarea.addClass("description");
-            col2textarea.attr("id", "txt-" + txtid[0]);
+            col2textarea.attr("id", "txt-" + j);
+
+
+            if (currentHour < j) {
+                $(col2textarea).addClass("past");
+            }
+            if (currentHour === j) {
+                $(col2textarea).addClass("present");
+            }
+            if (currentHour > j) {
+                (col2textarea).addClass("present");
+
+            }
+
+
+
+
+
+
+
+
+
+
             mainRowDiv.append(col2textarea);
 
             //add saveBtn div, class="col-sm-2 col-md-2 saveBtn"
@@ -61,8 +87,13 @@ $(document).ready(function () {
             col3Div.addClass("col-sm-2");
             col3Div.addClass("col-md-2");
             col3Div.addClass("saveBtn");
-            col3Div.attr("id", "save-" + txtid[0])
+            col3Div.attr("id", "save-" + j)
+
+
+
             mainRowDiv.append(col3Div);
+
+            j++;
         }
 
     }
@@ -144,72 +175,72 @@ $(document).ready(function () {
 
         }, 1000)
     }
-    changeBackGroundColor();
+    // changeBackGroundColor();
 
-    function changePastColor(currentHour) {
-        if (currentHour > 12) {
-            currentHour = currentHour - 12;
-            console.log("currentHourPast:  " + currentHour);
-            if(currentHour > 7) {currentHour =7}
-            for (var i = 1; i < currentHour && i < 7; i++) {  
-                var textareaId = "#txt-" + i;     
-                $(textareaId).addClass("past");
-            }
-            
-            for (var i = 9; i <= 12; i++) {
-                console
-                var textareaId = "#txt-" + i;
-                $(textareaId).addClass("past");
-            }
+    // function changePastColor(currentHour) {
+    //     if (currentHour > 12) {
+    //         currentHour = currentHour - 12;
+    //         console.log("currentHourPast:  " + currentHour);
+    //         if(currentHour > 7) {currentHour =7}
+    //         for (var i = 1; i < currentHour && i < 7; i++) {  
+    //             var textareaId = "#txt-" + i;     
+    //             $(textareaId).addClass("past");
+    //         }
 
-         
-        } else {
-            for (var i = 9; i <= currentHour; i++) {
-                var textareaId = "#txt-" + i;
-                $(textareaId).addClass("past");
-            }
-        }
-    }
+    //         for (var i = 9; i <= 12; i++) {
+    //             console
+    //             var textareaId = "#txt-" + i;
+    //             $(textareaId).addClass("past");
+    //         }
 
-    function changePresentColor(currentHour){
 
-        if (currentHour > 12) {
-            currentHour = currentHour - 12;
-            if(currentHour<7){
-            var textareaId = "#txt-" + currentHour;
-            $(textareaId).addClass("present");
-            }
-        } else {
-            if(currentHour>9){
-            var textareaId = "#txt-" + currentHour;
-            $(textareaId).addClass("present");
-            }
-        }
-       
-    }
+    //     } else {
+    //         for (var i = 9; i <= currentHour; i++) {
+    //             var textareaId = "#txt-" + i;
+    //             $(textareaId).addClass("past");
+    //         }
+    //     }
+    // }
 
-    function changeFutureColor(currentHour){
+    // function changePresentColor(currentHour){
 
-        if (currentHour > 12) {
-            currentHour = currentHour - 12;
-            console.log("currentHourFuture:  " + currentHour);
-            
-            for (var i = currentHour; i <= 6; i++) {
-                var textareaId = "#txt-" + i;
-                $(textareaId).addClass("future");
-            }
+    //     if (currentHour > 12) {
+    //         currentHour = currentHour - 12;
+    //         if(currentHour<7){
+    //         var textareaId = "#txt-" + currentHour;
+    //         $(textareaId).addClass("present");
+    //         }
+    //     } else {
+    //         if(currentHour>9){
+    //         var textareaId = "#txt-" + currentHour;
+    //         $(textareaId).addClass("present");
+    //         }
+    //     }
 
-        } else {
-            for (var i = currentHour+1; i <= 12; i++) {
-                var textareaId = "#txt-" + i;
-                $(textareaId).addClass("future");
-            }
-            for (var i = 1; i <= 6; i++) {
-                var textareaId = "#txt-" + i;
-                $(textareaId).addClass("future");
-            }
-        }
-       
-    }
+    // }
+
+    // function changeFutureColor(currentHour){
+
+    //     if (currentHour > 12) {
+    //         currentHour = currentHour - 12;
+    //         console.log("currentHourFuture:  " + currentHour);
+
+    //         for (var i = currentHour; i <= 6; i++) {
+    //             var textareaId = "#txt-" + i;
+    //             $(textareaId).addClass("future");
+    //         }
+
+    //     } else {
+    //         for (var i = currentHour+1; i <= 12; i++) {
+    //             var textareaId = "#txt-" + i;
+    //             $(textareaId).addClass("future");
+    //         }
+    //         for (var i = 1; i <= 6; i++) {
+    //             var textareaId = "#txt-" + i;
+    //             $(textareaId).addClass("future");
+    //         }
+    //     }
+
+    // }
 
 })
