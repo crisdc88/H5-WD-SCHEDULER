@@ -162,72 +162,8 @@ $(document).ready(function () {
 
         }, 1000)
     }
+
     changeBackGroundColor();
 
-    // function changePastColor(currentHour) {
-    //     if (currentHour > 12) {
-    //         currentHour = currentHour - 12;
-    //         console.log("currentHourPast:  " + currentHour);
-    //         if(currentHour > 7) {currentHour =7}
-    //         for (var i = 1; i < currentHour && i < 7; i++) {  
-    //             var textareaId = "#txt-" + i;     
-    //             $(textareaId).addClass("past");
-    //         }
-
-    //         for (var i = 9; i <= 12; i++) {
-    //             console
-    //             var textareaId = "#txt-" + i;
-    //             $(textareaId).addClass("past");
-    //         }
-
-
-    //     } else {
-    //         for (var i = 9; i <= currentHour; i++) {
-    //             var textareaId = "#txt-" + i;
-    //             $(textareaId).addClass("past");
-    //         }
-    //     }
-    // }
-
-    // function changePresentColor(currentHour){
-
-    //     if (currentHour > 12) {
-    //         currentHour = currentHour - 12;
-    //         if(currentHour<7){
-    //         var textareaId = "#txt-" + currentHour;
-    //         $(textareaId).addClass("present");
-    //         }
-    //     } else {
-    //         if(currentHour>9){
-    //         var textareaId = "#txt-" + currentHour;
-    //         $(textareaId).addClass("present");
-    //         }
-    //     }
-
-    // }
-
-    // function changeFutureColor(currentHour){
-
-    //     if (currentHour > 12) {
-    //         currentHour = currentHour - 12;
-    //         console.log("currentHourFuture:  " + currentHour);
-
-    //         for (var i = currentHour; i <= 6; i++) {
-    //             var textareaId = "#txt-" + i;
-    //             $(textareaId).addClass("future");
-    //         }
-
-    //     } else {
-    //         for (var i = currentHour+1; i <= 12; i++) {
-    //             var textareaId = "#txt-" + i;
-    //             $(textareaId).addClass("future");
-    //         }
-    //         for (var i = 1; i <= 6; i++) {
-    //             var textareaId = "#txt-" + i;
-    //             $(textareaId).addClass("future");
-    //         }
-    //     }
-
-    // }
 
 })
