@@ -60,7 +60,29 @@ $(document).ready(function () {
     }
 
     creatObjects();
-    // ============= EVENT LISTENERS==================
+
+
+    // ============= RETRIEVE DATA FROM LS ==========
+
+    function retrieveData() {
+        var objectKeys = Object.keys(scheduleObject);
+
+        console.log(" my keys: ", objectKeys);
+        objectKeys.forEach(element => {
+            console.log("myElement key:" + element);
+            var textareaIndex = "#txt-" + element;
+            console.log("key element:  " + textareaIndex)
+
+
+            var textareaInput = scheduleObject[element]
+            console.log(" this is the text area text:  " + textareaInput);
+            $(textareaIndex).text(textareaInput);
+        });
+
+    }
+    retrieveData();
+
+    // ============= EVENT LISTENERS=================
 
     //save txtArea
     $(".saveBtn").on("click", function () {
@@ -75,15 +97,15 @@ $(document).ready(function () {
         var enteredText = $.trim($(idText).val());
 
         console.log("captured text " + enteredText);
-        console.log("myIndex: " +index);
+        console.log("myIndex: " + index);
         tempScheduleObject = { [index]: enteredText }
         console.log("new object:  ", tempScheduleObject);
 
-        console.log("" ,scheduleObject[index]);
+
 
         // check if returned object from local storage is not null
-        if (scheduleObject[index] !== null) {
-            scheduleObject[index] = enteredText;
+        if (scheduleObject === null) {
+            scheduleObject = { [index]: enteredText };
 
         } else {
             scheduleObject[index] = enteredText;
