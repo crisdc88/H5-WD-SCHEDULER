@@ -13,12 +13,8 @@ $(document).ready(function () {
 
     var textHours = ["9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM"];
 
-    // ============== OBJECTS ==========================
 
-
-
-
-    // ============== DYNAMYC OBJECTS ========================
+    // ============== DYNAMYC ELEMENTS ========================
 
     function creatObjects() {
 
@@ -66,57 +62,38 @@ $(document).ready(function () {
     creatObjects();
     // ============= EVENT LISTENERS==================
 
-    // //save txtArea
-    // $(".saveBtn").on("click", function () {
-    //     var idSave = $(this).attr("id");
-    //     console.log("saving id =" + idSave);
+    //save txtArea
+    $(".saveBtn").on("click", function () {
+        var idSave = $(this).attr("id");
+        console.log("saving id =" + idSave);
 
-    //     var indexArray = idSave.split("-");
-    //     var index = indexArray[1];
-    //     var idText = "#txt-" + index;
+        var indexArray = idSave.split("-");
+        var index = indexArray[1];
+        var idText = "#txt-" + index;
 
-    //     console.log("idText: " + idText);
-    //     var enteredText = $.trim($(idText).val());
+        console.log("idText: " + idText);
+        var enteredText = $.trim($(idText).val());
 
-    //     console.log("captured text " + enteredText);
+        console.log("captured text " + enteredText);
+        console.log("myIndex: " +index);
+        tempScheduleObject = { [index]: enteredText }
+        console.log("new object:  ", tempScheduleObject);
 
-    //     switch (index) {
-    //         case 9:
-    //             tempScheduleObject = { "9": enteredText }
-    //         case 10:
-    //             tempScheduleObject = { "10": enteredText }
-    //         case 11:
-    //             tempScheduleObject = { "11": enteredText }
-    //         case 12:
-    //             tempScheduleObject = { "12": enteredText }
-    //         case 1:
-    //             tempScheduleObject = { "1": enteredText }
-    //         case 2:
-    //             tempScheduleObject = { "2": enteredText }
-    //         case 3:
-    //             tempScheduleObject = { "3": enteredText }
-    //         case 4:
-    //             tempScheduleObject = { "4": enteredText }
-    //         case 5:
-    //             tempScheduleObject = { "5": enteredText }
-    //         case 6:
-    //             tempScheduleObject = { "6": enteredText }
+        console.log("" ,scheduleObject[index]);
 
-    //     }
-    //     tempScheduleObject = { index: enteredText }
-    //     // check if returned object from local storage is not null
-    //     if (scheduleObject !== null) {
-    //         console.log("adding element to an objec:" + tempScheduleObject);
+        // check if returned object from local storage is not null
+        if (scheduleObject[index] !== null) {
+            scheduleObject[index] = enteredText;
 
-    //     } else {
-    //         scheduleObject = tempScheduleObject;
-    //     }
+        } else {
+            scheduleObject[index] = enteredText;
+        }
 
-    //     localStorage.setItem("schedule", JSON.stringify(scheduleObject));
+        localStorage.setItem("schedule", JSON.stringify(scheduleObject));
+
+    });
 
 
-
-    // });
 
 
 
