@@ -158,7 +158,7 @@ $(document).ready(function () {
             currentHour = moment().hour();
             console.log("currentHour 157: "+ currentHour);
             if (currentHour > pastHour) {
-                //location.reload();
+                location.reload();
             }
             pastHour = currentHour;
 
