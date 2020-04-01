@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-
     // console.log(moment().format());
     //console.log(moment().format("dddd, MMMM Do YYYY, h:mm:ss a"));
 
@@ -8,7 +6,7 @@ $(document).ready(function () {
     var startingHour = 9;
 
     var scheduleObject = JSON.parse(localStorage.getItem("schedule"));
-    console.log(scheduleObject);
+    //console.log(scheduleObject);
 
     var currenTime = moment().format("dddd, MMMM Do YYYY, h:mm:ss a")
     // var currenTime = moment().format("dddd, MMMM Do YYYY, HH:mm:ss A")
@@ -37,7 +35,7 @@ $(document).ready(function () {
             var mainRowDiv = $("<div>")
             mainRowDiv.addClass("row");
             // mainRowDiv.attr("id", +txtid[0]);
-            mainRowDiv.attr("id", +j);
+            mainRowDiv.attr("id", +i);
             $("#mainContainer").append(mainRowDiv);
 
 
@@ -56,16 +54,17 @@ $(document).ready(function () {
             col2textarea.addClass("col-sm-8");
             col2textarea.addClass("col-md-8");
             col2textarea.addClass("description");
-            col2textarea.attr("id", "txt-" + j);
+            col2textarea.attr("id", "txt-" + i);
 
-
-            if (currentHour < j) {
+            console.log("current hour: " + currentHour + " /j:  "+ j)
+            if (j < currentHour) {
+                
                 $(col2textarea).addClass("past");
             }
             if (currentHour === j) {
                 $(col2textarea).addClass("present");
             }
-            if (currentHour > j) {
+            if (j > currentHour) {
                 (col2textarea).addClass("present");
 
             }
@@ -94,19 +93,22 @@ $(document).ready(function () {
     $("#currentDay").text(currenTime);
 
     function retrieveData() {
-        var objectKeys = Object.keys(scheduleObject);
 
-        console.log(" my keys: ", objectKeys);
-        objectKeys.forEach(element => {
-            console.log("myElement key:" + element);
-            var textareaIndex = "#txt-" + element;
-            console.log("key element:  " + textareaIndex)
+        if (scheduleObject !== null) {
+            var objectKeys = Object.keys(scheduleObject);
+            console.log(" my keys: ", objectKeys);
+            objectKeys.forEach(element => {
+                console.log("myElement key:" + element);
+                var textareaIndex = "#txt-" + element;
+                console.log("key element:  " + textareaIndex)
+    
+    
+                var textareaInput = scheduleObject[element]
+                console.log(" this is the text area text:  " + textareaInput);
+                $(textareaIndex).text(textareaInput);
+            });
 
-
-            var textareaInput = scheduleObject[element]
-            console.log(" this is the text area text:  " + textareaInput);
-            $(textareaIndex).text(textareaInput);
-        });
+        } 
 
     }
     retrieveData();
@@ -119,7 +121,7 @@ $(document).ready(function () {
     //save txtArea
     $(".saveBtn").on("click", function () {
         var idSave = $(this).attr("id");
-        console.log("saving id =" + idSave);
+        console.log("122: saving id =" + idSave);
 
         var indexArray = idSave.split("-");
         var index = indexArray[1];
@@ -154,9 +156,9 @@ $(document).ready(function () {
 
         myInterval = setInterval(function () {
             currentHour = moment().hour();
-
+            console.log("currentHour 157: "+ currentHour);
             if (currentHour > pastHour) {
-                location.reload();
+                //location.reload();
             }
             pastHour = currentHour;
 
