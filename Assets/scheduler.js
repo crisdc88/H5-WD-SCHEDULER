@@ -56,9 +56,9 @@ $(document).ready(function () {
             col2textarea.addClass("description");
             col2textarea.attr("id", "txt-" + i);
 
-            console.log("current hour: " + currentHour + " /j:  "+ j)
+            console.log("current hour: " + currentHour + " /j:  " + j)
             if (j < currentHour) {
-                
+
                 $(col2textarea).addClass("past");
             }
             if (currentHour === j) {
@@ -101,14 +101,14 @@ $(document).ready(function () {
                 console.log("myElement key:" + element);
                 var textareaIndex = "#txt-" + element;
                 console.log("key element:  " + textareaIndex)
-    
-    
+
+
                 var textareaInput = scheduleObject[element]
                 console.log(" this is the text area text:  " + textareaInput);
                 $(textareaIndex).text(textareaInput);
             });
 
-        } 
+        }
 
     }
     retrieveData();
@@ -152,15 +152,15 @@ $(document).ready(function () {
     // ============ CHANGE COLORS ============
 
     function changeBackGroundColor() {
-        var pastHour = startingHour;
+        var pastHour = moment().hour();
 
         myInterval = setInterval(function () {
             currentHour = moment().hour();
-            console.log("currentHour 157: "+ currentHour);
+            console.log("currentHour 157  : " + currentHour + " past hour: " + pastHour);
             if (currentHour > pastHour) {
+                pastHour = currentHour;
                 location.reload();
             }
-            pastHour = currentHour;
 
         }, 1000)
     }
