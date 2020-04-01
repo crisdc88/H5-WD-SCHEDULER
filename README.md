@@ -57,13 +57,13 @@ A set interval will be running every second, and the page will get refresh only 
 
 Because of the way I desing the creation of the elements, just by doing the following I was able to change the background colors.
 
-            if (currentHour < j) {
+            if (currentHour > j) {
                 $(col2textarea).addClass("past");
             }
             if (currentHour === j) {
                 $(col2textarea).addClass("present");
             }
-            if (currentHour > j) {
+            if (currentHour < j) {
                 (col2textarea).addClass("present");
 
             }
